@@ -1,17 +1,18 @@
 import * as React from "react";
 import ClassCardDeck from "../lib/classCardDeck.ts";
 
-export interface CardProps {
+interface CardProps {
     rank: string;
-    suit: object;
+    suit: string;
 }
 
 const Card: React.FC<CardProps> = ({rank, suit}) => {
+
     const suitsObj = {
         diams: '♦',
         hearts: '♥',
         clubs: '♣',
-        spades: '♠'
+        spades: '♠',
     };
 
     const hand = new ClassCardDeck();
