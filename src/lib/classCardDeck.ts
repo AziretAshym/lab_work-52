@@ -16,6 +16,10 @@ class ClassCardDeck {
     }
 
     getCard(): ClassCard {
+        if (this.deck.length === 0) {
+            return null;
+        }
+
         const randomCard = Math.floor(Math.random() * this.deck.length);
         return this.deck.splice(randomCard, 1)[0];
     };
@@ -23,11 +27,19 @@ class ClassCardDeck {
     getCards(howMany: number): ClassCard[] {
         const cards: ClassCard[] = [];
         for (let i= 0; i < howMany; i++) {
-            cards.push(this.getCard());
+            const card = this.getCard();
+            if (card) {
+                cards.push(card);
+            } else {
+                break;
+            }
         }
         return cards;
-    }
+    };
 
+    getRestOfCards(): number {
+        return this.deck.length
+    }
 }
 
 export default ClassCardDeck;
